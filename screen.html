@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<script src="https://www.airconsole.com/api/airconsole-1.5.0.js"></script>
+	</head>
+	<body>
+	   <script type="text/javascript">
+    var air_console = new AirConsole();
+
+    // Listen for messages from other devices
+    air_console.onMessage = function(from, data) {
+	  console.log('screen, recieved message', data);
+
+      // We receive a message -> Send message back to the device
+      air_console.message(from, "Full of pixels!");
+
+      // Show message on device screen
+      var info = document.createElement('DIV');
+      info.innerHTML = data;
+      document.body.appendChild(info);
+    };
+    </script>
+		<H1 style="color: white;"> screen.html works </h1>
+	</body>
+</html>
