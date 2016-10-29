@@ -1,5 +1,7 @@
-var in = document.getElementById("in");
-var out = document.getElementById("out");
-while (true) {
-  out.innerHTML = in.innerHTML;
+function start() {
+  var in = document.getElementById("in");
+  var out = document.getElementById("out");
+  while (true) {
+    out.innerHTML = in.innerHTML;
+  }
 }
