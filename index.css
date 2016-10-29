@@ -1,6 +1,6 @@
 .main textarea {
-  height: 100vh;
-  width: 99vh;
+  min-height: 99vh;
+  min-width: 100vh;
 }
 .main input {
   height: 1vh;
