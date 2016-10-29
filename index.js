@@ -1,7 +1,7 @@
 function start() {
-  var in = document.getElementById("in");
+  var input = document.getElementById("in");
   var out = document.getElementById("out");
   while (true) {
-    out.innerHTML = in.innerHTML;
+    out.innerHTML = input.innerHTML;
   }
 }
