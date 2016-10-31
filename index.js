@@ -1,7 +1,7 @@
-function start() {
+function init() {
   var input = document.getElementById("in");
   var out = document.getElementById("out");
-  document.addEventListener("keydown", function() {
+  input.addEventListener("input", function() {
     out.innerHTML = input.innerHTML;
   });
 }
