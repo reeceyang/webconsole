@@ -6,8 +6,6 @@ function init() {
   input.addEventListener("input", function() {
     line = input.innerHTML;
     out.innerHTML = out.innerHTML.substring(0, out.innerHTML.length-oldLength);
-    console.log(out.innerHTML.substring(0, out.innerHTML.length-oldLength))
-    console.log(oldLength)
     out.innerHTML += line;
     oldLength = line.length;
   });
