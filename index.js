@@ -11,7 +11,7 @@ function init() {
   });
   
   function println(stuff) {
-    out.innerHTML += stuff + "\n";
+    out.innerHTML += stuff + "<br>";
   }
   
   println("Hello World");
