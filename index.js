@@ -3,12 +3,8 @@ function init() {
   var input = document.getElementById("in");
   var out = document.getElementById("out");
   input.addEventListener("input", function() {
+    console.log("event hit")
     line = input.innerHTML;
     output.innerHTML = line;
   });
-  /*function print(var stuff) {
-    output.innerHTML = output.innerHTML + stuff;
-  }
-  
-  print("Hello World!")*/
 }
