@@ -6,9 +6,9 @@ function init() {
     line = input.innerHTML;
     output.innerHTML = line;
   });
-  function print(var stuff) {
+  /*function print(var stuff) {
     output.innerHTML = output.innerHTML + stuff;
   }
   
-  print("Hello World!")
+  print("Hello World!")*/
 }
