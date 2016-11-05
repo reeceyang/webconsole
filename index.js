@@ -14,5 +14,8 @@ function init() {
     out.innerHTML += stuff + "<br>";
   }
   
+  function print(stuff) {
+    out.innerHTML += stuff;
+  }
   println("Hello World");
 }
