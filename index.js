@@ -9,4 +9,10 @@ function init() {
     out.innerHTML += line;
     oldLength = line.length;
   });
+  
+  function println(var stuff) {
+    out.innerHTML += stuff + "\n";
+  }
+  
+  println("Hello World");
 }
