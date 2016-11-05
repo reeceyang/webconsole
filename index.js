@@ -9,25 +9,11 @@ function init() {
     out.innerHTML += line;
     oldLength = line.length;
   });
-  
   function println(stuff) {
     out.innerHTML += stuff + "<br>";
-  }
-  
+  } 
   function print(stuff) {
     out.innerHTML += stuff;
   }
   println("Hello World");
-  
-  input.addEventListener("onkeypress", function() {
-    var keynum;
-
-    if(window.event) { // IE                    
-      keynum = e.keyCode;
-    } else if(e.which){ // Netscape/Firefox/Opera                   
-      keynum = e.which;
-    }
-
-    alert(String.fromCharCode(keynum));
-  });
 }
