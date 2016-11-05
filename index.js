@@ -10,7 +10,7 @@ function init() {
     oldLength = line.length;
   });
   
-  function println(var stuff) {
+  function println(stuff) {
     out.innerHTML += stuff + "\n";
   }
   
