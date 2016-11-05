@@ -5,6 +5,6 @@ function init() {
   input.addEventListener("input", function() {
     console.log("event hit")
     line = input.innerHTML;
-    output.innerHTML = line;
+    out.innerHTML = line;
   });
 }
