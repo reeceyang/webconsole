@@ -17,3 +17,9 @@ function init() {
   }
   println("Hello World");
 }
+function println(stuff, out) {
+  out.innerHTML += stuff + "<br>";
+} 
+function print(stuff, out) {
+  out.innerHTML += stuff;
+}
