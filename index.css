@@ -1,8 +1,16 @@
 #out {
-  max-height: 99vh;
+  max-height: 85vh;
   overflow: auto;
-  
 }
+
 #in {
-   border: 1px solid black;
+  width: 90%;
+}
+
+.main {
+  max-width: 500px;
+  margin: auto;
+  margin-top: 2em;
+  padding: 1em;
+  border: 1px solid black;
 }
