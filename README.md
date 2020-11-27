@@ -1,5 +1,5 @@
 # webconsole
-Provides a web console HTML page with print and input functions for JavaScript.
+Provides a web console HTML page with print and input functions for JavaScript. A demonstration with a simple number-guessing game is available on this repository's [github-pages](https://reeceyang.github.io/webconsole/).
 
 ## Usage
 1. Copy index.css, index.html, and index.js into your project.
@@ -25,7 +25,7 @@ Prints all arguments to the console, one after another.
 
 #### `println(arg1, arg2, ...)`
 
-Prints all arguments to the console, on after another, with a line break at the end.
+Prints all arguments to the console, one after another, with a line break at the end.
 
 #### `await input(arg1, arg2, ...)`
 
