@@ -13,6 +13,17 @@ function sanitize(string) {
   return string.replace(reg, (match)=>(map[match]));
 }
 
+// toggle dark/light theme
+document.getElementById("toggle-theme").addEventListener("click", function (){
+  document.body.classList.toggle("dark-mode");
+  document.getElementsByClassName("main")[0].classList.toggle("dark-mode");
+  document.getElementById("in").classList.toggle("dark-mode");
+  document.getElementById("in").focus();
+});
+if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  document.getElementById("toggle-theme").click();
+}
+
 var inp = document.getElementById("in");
 var out = document.getElementById("out");
 

@@ -4,14 +4,53 @@
 }
 
 #in {
-  width: 90%;
+  width: 100%;
+}
+
+* {
+  font-family: 'Source Code Pro', monospace;
+}
+
+.main, footer {
+  max-width: 500px;
+  margin: auto;
 }
 
 .main {
-  max-width: 500px;
-  margin: auto;
   margin-top: 2em;
   padding: 1em;
   border: 1px solid black;
-  font-family: 'Source Code Pro', monospace;
+}
+
+a {
+  color: #808080;
+}
+
+footer, footer a {
+  margin-top: 2em;
+  text-align: center;
+}
+
+a:hover {
+  color: #494949;
+}
+
+#toggle-theme {
+  cursor: pointer;
+  text-decoration: underline;
+  float: right;
+  margin-top: -2em;
+}
+
+#in.dark-mode {
+  background-color: #242424;
+}
+
+.dark-mode {
+  background: #242424;
+  color: #DBDBDB;
+}
+
+.main.dark-mode {
+  border: 1px solid #DBDBDB;
 }
