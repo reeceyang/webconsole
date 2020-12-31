@@ -1,26 +1,40 @@
 <html>
   <head>
     <title>Webconsole</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="webconsole.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
   </head>
   <body>
     <a id="toggle-theme">Dark/Light Mode</a>
     <div class="main">
-      <div contenteditable="true">
-        <div contenteditable="false" id="out">
-          Output:<br>
-        </div>
-      </div>
+      Output:<br>
+      <div contenteditable="false" id="out"></div>
       <br><hr>
-      Input: <input type="text" contenteditable="true" id="in" autofocus>
-      </input>
+      Input:<br>
+      <input type="text" contenteditable="true" id="in" autofocus></input>
       <!-- <button id="submit-button">Submit</button> -->
     </div>
     <footer>
-      <em><p>Powered with <a href="https://github.com/reeceyang/webconsole">Webconsole</a>, created by <a href="https://github.com/reeceyang">Reece Yang</a>.</em>
+      <em><p>Powered by <a href="https://github.com/reeceyang/webconsole">Webconsole</a>. Made with &lt;3 by <a href="https://github.com/reeceyang">Reece</a>.</p></em>
     </footer>
   </body>
-  <script src="index.js"></script>
 <html>
+<script src="webconsole.js"></script>
+<script>
+async function main() {
+  var num = Math.floor((Math.random() * 100) + 1);
+  guess = -1;
+  while (guess != num) {
+    var guess = parseInt(await input("guess a number between 1 and 100: "));
+    if (guess > num) {
+      println("too high");
+    } else if (guess < num) {
+      println("too low");
+    }
+  }
+  println("You win!");
+}
+
+main();
+</script>

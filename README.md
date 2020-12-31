@@ -2,7 +2,7 @@
 Provides a web console HTML page with print and input functions for JavaScript. A demonstration with a simple number-guessing game is available on this repository's [github-pages](https://reeceyang.github.io/webconsole/).
 
 ## Usage
-1. Copy index.css, index.html, and index.js into your project.
+1. Copy webconsole.css, index.html, and webconsole.js into your project.
 
 2. Write your code in an asynchronous main function:
 ```javascript

@@ -39,6 +39,9 @@ function print(stuff) {
   out.innerHTML += stuff;
   out.scrollTop += 100;
 }
+function clear() {
+  out.innerHTML = "";
+}
 
 async function input() {
   for (i in arguments) {
@@ -63,19 +66,3 @@ async function input() {
   inputting = false;
   return stuff;
 }
-
-async function main() {
-  var num = Math.floor((Math.random() * 100) + 1);
-  guess = -1;
-  while (guess != num) {
-    var guess = parseInt(await input("guess a number between 1 and 100: "));
-    if (guess > num) {
-      println("too high");
-    } else if (guess < num) {
-      println("too low");
-    }
-  }
-  println("You win!");
-}
-
-main();
