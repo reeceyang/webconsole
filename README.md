@@ -27,6 +27,10 @@ Prints all arguments to the console, one after another.
 
 Prints all arguments to the console, one after another, with a line break at the end.
 
+#### `clear()`
+
+Clears the content of the console output.
+
 #### `await input(arg1, arg2, ...)`
 
 Prints all arguments to the console, then waits for the user to input a value. Then prints a line break at the end, and returns that value. *Note:* you must place a `await` in front because `input()` is an asynchronous function.
