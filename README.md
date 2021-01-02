@@ -2,16 +2,30 @@
 Provides a web console HTML page with print and input functions for JavaScript. A demonstration with a simple number-guessing game is available on this repository's [github-pages](https://reeceyang.github.io/webconsole/).
 
 ## Usage
-1. Copy webconsole.css, index.html, and webconsole.js into your project.
+1. Copy webconsole.js and webconsole.css (optional, but required if you want to use dark mode) into your project (I'm working on setting up a CDN).
 
-2. Write your code in an asynchronous main function:
+2. Include webconsole.js and webconsole.css in your .html file. Call
+```javascript
+addWebconsole(element);
+```
+to append Webconsole to the contents of `element`, where `element` is a JS DOM object. For example,
+```javascript
+addWebconsole(document.body);
+```
+adds Webconsole to the document body. Call
+```javascript
+addDarkMode(element);
+```
+to add a dark mode toggle button to the start of the contents of `element`. 
+
+3. Write your code in an asynchronous main function:
 ```javascript
 async function main() {
   // do stuff
 }
 ```
 
-3. Call the main function to run your program:
+4. Call the main function to run your program:
 
 ```javascript
 main();

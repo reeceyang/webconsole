@@ -1,3 +1,21 @@
+:root {
+  --background: white;
+  --focus: #f8f8f8;
+  --border: black;
+  --link: #808080;
+  --link-hover: #494949;
+  --text: black;
+}
+
+.dark {
+  --background: #242424;
+  --focus: #2f2f2f;
+  --border: black;
+  --link: #DBDBDB;
+  --link-hover: #494949;
+  --text: #DBDBDB;
+}
+
 #out {
   max-height: 85vh;
   overflow: auto;
@@ -6,6 +24,17 @@
 #in {
   width: 100%;
   font-size: inherit;
+  background-color: var(--background);
+  border: none;
+  border-bottom: 0.15em solid var(--link);
+  outline: none;
+  color: inherit;
+  transition: 0.4s;
+  padding: 0.15em;
+}
+
+#in:focus {
+  background: var(--focus);
 }
 
 * {
@@ -13,18 +42,24 @@
 }
 
 .main, footer {
-  max-width: 500px;
+  max-width: 40em;
   margin: auto;
 }
 
 .main {
   margin-top: 2em;
   padding: 1em;
-  border: 1px solid black;
+  border: 1px solid var(--border);
+}
+
+body {
+  color: var(--text);
+  background: var(--background);
+  transition: 0.4s;
 }
 
 a {
-  color: #808080;
+  color: var(--link);
 }
 
 footer, footer a {
@@ -33,7 +68,7 @@ footer, footer a {
 }
 
 a:hover {
-  color: #494949;
+  color: var(--link-hover);
 }
 
 #toggle-theme {
@@ -41,17 +76,4 @@ a:hover {
   text-decoration: underline;
   float: right;
   margin-top: -2em;
-}
-
-#in.dark-mode {
-  background-color: #242424;
-}
-
-.dark-mode {
-  background: #242424;
-  color: #DBDBDB;
-}
-
-.main.dark-mode {
-  border: 1px solid #DBDBDB;
 }

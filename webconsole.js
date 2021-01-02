@@ -13,21 +13,33 @@ function sanitize(string) {
   return string.replace(reg, (match)=>(map[match]));
 }
 
-// toggle dark/light theme
-document.getElementById("toggle-theme").addEventListener("click", function (){
-  document.body.classList.toggle("dark-mode");
-  document.getElementsByClassName("main")[0].classList.toggle("dark-mode");
-  document.getElementById("in").classList.toggle("dark-mode");
-  document.getElementById("in").focus();
-});
-if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-  document.getElementById("toggle-theme").click();
+function addWebconsole(element) {
+  var webconsoleHTML = `
+  <div class="main">
+    Output:<br>
+    <div contenteditable="false" id="out"></div>
+    <br><hr>
+    Input:<br>
+    <input type="text" contenteditable="true" id="in" autofocus></input>
+    <!-- <button id="submit-button">Submit</button> -->
+  </div>
+  <footer>
+    <em><p>Powered by <a href="https://github.com/reeceyang/webconsole">Webconsole</a>. Made with &lt;3 by <a href="https://github.com/reeceyang">Reece</a>.</p></em>
+  </footer>`;
+  element.innerHTML += webconsoleHTML;
 }
 
-var inp = document.getElementById("in");
-var out = document.getElementById("out");
+function addDarkMode(element) {
+  element.innerHTML = "<a id=\"toggle-theme\">Dark/Light Mode</a>" + element.innerHTML;
+  document.getElementById("toggle-theme").addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+  });
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    document.getElementById("toggle-theme").click();
+  }
+}
 
-var inputting = false;
+var webconsoleInputting = false;
 
 function println() {
   for (i in arguments) {
@@ -36,33 +48,36 @@ function println() {
   print("<br>");
 }
 function print(stuff) {
+  var out = document.getElementById("out");
   out.innerHTML += stuff;
   out.scrollTop += 100;
 }
 function clear() {
+  var out = document.getElementById("out");
   out.innerHTML = "";
 }
-
 async function input() {
+  var inp = document.getElementById("in");
+
   for (i in arguments) {
     print(arguments[i]);
   }
 
   var enterPressed = new Promise(function(resolve, reject) {
     inp.addEventListener("keyup", function(event) {
-      if(event.key === "Enter" & inputting) {
+      if(event.key === "Enter" & webconsoleInputting) {
         //console.log("enter pressed");
         resolve("Yes");
       }
     });
   });
 
-  inputting = true;
+  webconsoleInputting = true;
   await enterPressed;
   var stuff = sanitize(inp.value);
   inp.value = "";
   print(stuff);
   println();
-  inputting = false;
+  webconsoleInputting = false;
   return stuff;
 }

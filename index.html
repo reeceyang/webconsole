@@ -6,22 +6,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
   </head>
   <body>
-    <a id="toggle-theme">Dark/Light Mode</a>
-    <div class="main">
-      Output:<br>
-      <div contenteditable="false" id="out"></div>
-      <br><hr>
-      Input:<br>
-      <input type="text" contenteditable="true" id="in" autofocus></input>
-      <!-- <button id="submit-button">Submit</button> -->
-    </div>
-    <footer>
-      <em><p>Powered by <a href="https://github.com/reeceyang/webconsole">Webconsole</a>. Made with &lt;3 by <a href="https://github.com/reeceyang">Reece</a>.</p></em>
-    </footer>
   </body>
 <html>
 <script src="webconsole.js"></script>
 <script>
+addWebconsole(document.body);
+addDarkMode(document.body);
+
 async function main() {
   var num = Math.floor((Math.random() * 100) + 1);
   guess = -1;
