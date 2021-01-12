@@ -16,12 +16,12 @@
   --text: #DBDBDB;
 }
 
-#out {
+#webconsole-out {
   max-height: 85vh;
   overflow: auto;
 }
 
-#in {
+#webconsole-in {
   width: 100%;
   font-size: inherit;
   background-color: var(--background);
@@ -33,7 +33,7 @@
   padding: 0.15em;
 }
 
-#in:focus {
+#webconsole-in:focus {
   background: var(--focus);
 }
 
@@ -47,7 +47,7 @@
 }
 
 .main {
-  margin-top: 2em;
+  margin-top: 1vh;
   padding: 1em;
   border: 1px solid var(--border);
 }

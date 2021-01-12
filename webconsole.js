@@ -1,63 +1,69 @@
 // from https://stackoverflow.com/questions/2794137/sanitizing-user-input-before-adding-it-to-the-dom-in-javascript
-function sanitize(string) {
-  const map = {
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#x27;',
-      "/": '&#x2F;',
-      "`": '&grave;'
-  };
-  const reg = /[&<>"'/]/ig;
-  return string.replace(reg, (match)=>(map[match]));
-}
+var Webconsole = (function() {
+  return {
+  sanitize: function(string) {
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#x27;',
+        "/": '&#x2F;',
+        "`": '&grave;'
+    };
+    const reg = /[&<>"'/]/ig;
+    return string.replace(reg, (match)=>(map[match]));
+  },
+  addTo: function(element) {
+    var webconsoleHTML = `
+    <div class="main">
+      Output:<br>
+      <div contenteditable="false" id="webconsole-out"></div>
+      <br><hr>
+      Input:<br>
+      <input type="text" contenteditable="true" id="webconsole-in" autofocus></input>
+    </div>
+    <footer>
+      <em><p>Powered by <a href="https://github.com/reeceyang/webconsole">Webconsole</a>. Made with &lt;3 by <a href="https://github.com/reeceyang">Reece</a>.</p></em>
+    </footer>`;
+    element.innerHTML += webconsoleHTML;
+  },
+  addDarkModeTo: function(element) {
+    element.innerHTML = "<a id=\"toggle-theme\">Dark/Light Mode</a>" + element.innerHTML;
+    document.getElementById("toggle-theme").addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+    });
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.getElementById("toggle-theme").click();
+    }
+  },
+  currentlyInputting: false,
+};
+})();
 
-function addWebconsole(element) {
-  var webconsoleHTML = `
-  <div class="main">
-    Output:<br>
-    <div contenteditable="false" id="out"></div>
-    <br><hr>
-    Input:<br>
-    <input type="text" contenteditable="true" id="in" autofocus></input>
-    <!-- <button id="submit-button">Submit</button> -->
-  </div>
-  <footer>
-    <em><p>Powered by <a href="https://github.com/reeceyang/webconsole">Webconsole</a>. Made with &lt;3 by <a href="https://github.com/reeceyang">Reece</a>.</p></em>
-  </footer>`;
-  element.innerHTML += webconsoleHTML;
-}
-
-function addDarkMode(element) {
-  element.innerHTML = "<a id=\"toggle-theme\">Dark/Light Mode</a>" + element.innerHTML;
-  document.getElementById("toggle-theme").addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-  });
-  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    document.getElementById("toggle-theme").click();
-  }
-}
-
-var webconsoleInputting = false;
-
-function println() {
+async function println() {
+  var s = "";
   for (i in arguments) {
-    print(arguments[i]);
+    s += await arguments[i];
   }
+  print(s);
   print("<br>");
 }
-function print(stuff) {
-  var out = document.getElementById("out");
-  out.innerHTML += stuff;
+async function print() {
+  var out = document.getElementById("webconsole-out");
+  var s = "";
+  for (i in arguments) {
+    s += await arguments[i];
+  }
+  out.innerHTML += s;
   out.scrollTop += 100;
 }
 function clear() {
-  var out = document.getElementById("out");
+  var out = document.getElementById("webconsole-out");
   out.innerHTML = "";
 }
 async function input() {
-  var inp = document.getElementById("in");
+  var inp = document.getElementById("webconsole-in");
 
   for (i in arguments) {
     print(arguments[i]);
@@ -65,19 +71,21 @@ async function input() {
 
   var enterPressed = new Promise(function(resolve, reject) {
     inp.addEventListener("keyup", function(event) {
-      if(event.key === "Enter" & webconsoleInputting) {
+      if(event.key === "Enter" & Webconsole.currentlyInputting) {
         //console.log("enter pressed");
         resolve("Yes");
       }
     });
   });
 
-  webconsoleInputting = true;
+  Webconsole.currentlyInputting = true;
+  //console.log("waiting for enterPressed");
   await enterPressed;
-  var stuff = sanitize(inp.value);
+  //console.log("enterPressed");
+  var stuff = Webconsole.sanitize(inp.value);
   inp.value = "";
   print(stuff);
   println();
-  webconsoleInputting = false;
+  Webconsole.currentlyInputting = false;
   return stuff;
 }
