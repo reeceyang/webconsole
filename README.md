@@ -1,5 +1,5 @@
 # webconsole
-Provides a web console HTML page with print and input functions for JavaScript. A demonstration with a simple number-guessing game is available on this repository's [github-pages](https://reeceyang.github.io/webconsole/).
+Provides a web console HTML page with print and input functions for JavaScript. A demonstration with a simple number-guessing game is available on this repository's [github-pages](https://reeceyang.github.io/webconsole/demo.html).
 
 ## Usage
 1. Copy webconsole.js and webconsole.css (optional, but required if you want to use dark mode) into your project (I'm working on setting up a CDN---you can try using [https://reeceyang.github.io/webconsole/webconsole.js](https://reeceyang.github.io/webconsole/webconsole.js) for now). You can also add this repository as a git submodule.
