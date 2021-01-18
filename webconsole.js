@@ -1,4 +1,5 @@
 // from https://stackoverflow.com/questions/2794137/sanitizing-user-input-before-adding-it-to-the-dom-in-javascript
+// https://www.sitepoint.com/delay-sleep-pause-wait/
 var Webconsole = (function() {
   return {
   sanitize: function(string) {
@@ -13,6 +14,9 @@ var Webconsole = (function() {
     };
     const reg = /[&<>"'/]/ig;
     return string.replace(reg, (match)=>(map[match]));
+  },
+  sleep: function(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   },
   addTo: function(element) {
     var webconsoleHTML = `
@@ -41,26 +45,31 @@ var Webconsole = (function() {
 };
 })();
 
-async function println() {
+function println() {
   var s = "";
   for (i in arguments) {
-    s += await arguments[i];
+    s += arguments[i];
   }
-  print(s);
-  print("<br>");
+  print(s, "<br>");
 }
-async function print() {
-  var out = document.getElementById("webconsole-out");
-  var s = "";
-  for (i in arguments) {
-    s += await arguments[i];
-  }
-  out.innerHTML += s;
-  out.scrollTop += 100;
+function print() {
+  setTimeout(() => {
+    var out = document.getElementById("webconsole-out");
+    var s = "";
+    for (i in arguments) {
+      s += arguments[i];
+    }
+    out.innerHTML += s;
+    //console.log("printing " + s);
+    //console.log("out is: " + out.innerHTML);
+    out.scrollTop += 100;
+  }, 0);
 }
 function clear() {
-  var out = document.getElementById("webconsole-out");
-  out.innerHTML = "";
+  setTimeout(() => {
+    var out = document.getElementById("webconsole-out");
+    out.innerHTML = "";
+  }, 0);
 }
 async function input() {
   var inp = document.getElementById("webconsole-in");
